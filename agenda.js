@@ -1,7 +1,7 @@
 
 const MONGO_URL = process.env.MONGO_URL;
-const agenda = new require('Agenda')({ db: { address: MONGO_URL } });
-const {producer} = require('./producer.js');
+const agenda = new require('agenda')({ db: { address: MONGO_URL } });
+const { producer } = require('./producer.js');
 
 const COMMAND = process.env.COMMAND;
 const ARGUMENTS = process.env.ARGUMENTS;

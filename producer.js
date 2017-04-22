@@ -12,7 +12,7 @@ const MONGO_URL = process.env.MONGO_URL;
 
 const lookup = Promise.promisify(ps.lookup);
 
-exports.producer = (COMMAND, ARGUMENTS) => {
+const producer = (COMMAND, ARGUMENTS) => {
   let db = null;
   let collection = null;
   let proc = null;
@@ -22,6 +22,7 @@ exports.producer = (COMMAND, ARGUMENTS) => {
     arguments: ARGUMENTS,
   })
     .then((procList) => {
+      console.log('process found', _(procList).first());
       proc = Object.assign(
         {},
         { name: `${COMMAND}-${ARGUMENTS}` },
@@ -48,7 +49,8 @@ exports.producer = (COMMAND, ARGUMENTS) => {
       const objToSave = Object.assign(
         {},
         proc,
-        sysInfo
+        sysInfo,
+        { created: new Date() }
       );
       collection.insert(objToSave);
       return objToSave;
@@ -62,3 +64,5 @@ exports.producer = (COMMAND, ARGUMENTS) => {
       throw err;
     });
 }
+
+exports.producer = producer;
