@@ -45,16 +45,17 @@ exports.producer = (COMMAND, ARGUMENTS) => {
     .then(function (conn) {
       db = conn;
       collection = db.collection("status");
-
-      collection.insert(Object.assign(
+      const objToSave = Object.assign(
         {},
         proc,
         sysInfo
-      ));
+      );
+      collection.insert(objToSave);
+      return objToSave;
     })
-    .then(() => {
-      console.log('save to db');
+    .then((objSaved) => {
       db.close();
+      return objSaved;
     })
     .catch(function (err) {
       db.close();

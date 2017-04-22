@@ -5,13 +5,12 @@ const {producer} = require('./producer.js');
 
 const COMMAND = process.env.COMMAND;
 const ARGUMENTS = process.env.ARGUMENTS;
-
-
+const SCHEDULE = process.env.SCHEDULE || 'every 5 minutes';
 
 agenda.define('sickrage', function (job, done) {
-  console.log(producer);
+  console.log('job started');
   producer(COMMAND, ARGUMENTS)
-    .then(() => {
+    .then((objSaved) => {
       console.log('job ended');
       done();
     })
@@ -29,7 +28,7 @@ function graceful() {
 
 
 agenda.on('ready', function () {
-  agenda.every('30 seconds', 'sickrage');
+  agenda.schedule(SCHEDULE, 'sickrage');
   agenda.start();
 });
 
