@@ -8,10 +8,10 @@ const ARGUMENTS = process.env.ARGUMENTS;
 const SCHEDULE = process.env.SCHEDULE || 'every 5 minutes';
 
 agenda.define('sickrage', function (job, done) {
-  console.log('job started');
+  console.log(new Date(), 'job started');
   producer(COMMAND, ARGUMENTS)
     .then((objSaved) => {
-      console.log('job ended');
+      console.log(new Date(), 'job ended');
       done();
     })
     .catch((error) => {
