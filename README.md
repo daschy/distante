@@ -1,6 +1,8 @@
 # Run
 
-1. touch .env
+1. `npm i`
+
+1. `touch .env`
 
 1. add env vars
   ```
