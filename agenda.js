@@ -28,7 +28,7 @@ function graceful() {
 
 
 agenda.on('ready', function () {
-  agenda.schedule(SCHEDULE, 'sickrage');
+  agenda.every(SCHEDULE, 'sickrage');
   agenda.start();
 });
 
