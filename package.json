@@ -1,0 +1,19 @@
+{
+  "name": "distante",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "daschy",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "lodash": "^4.17.4",
+    "mongo": "^0.1.0",
+    "pm2": "^2.4.5",
+    "ps-node": "^0.1.6",
+    "systeminformation": "^3.17.0"
+  }
+}
