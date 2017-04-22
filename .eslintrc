@@ -1,0 +1,26 @@
+{
+  "extends": "airbnb",
+  "rules": {
+    "no-console": [
+      "off"
+    ],
+    "no-multi-assign": [
+      "off"
+    ],
+    "no-shadow": [
+      0,
+      "error",
+      {
+        "allow": [
+          "err",
+          "error"
+        ]
+      }
+    ],
+    "yoda": [
+      "off"
+    ]
+  },
+  "env": {
+  }
+}
